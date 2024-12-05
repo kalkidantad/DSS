@@ -1,10 +1,19 @@
-! (register-module! ../RSS)
+!(register-module! ../RSS)
 !(import! &self RSS:data)
-! (bind! &data (new-space))
+!(import! &self RSS:program)
+!(bind! &data (new-space))
+!(bind! &program (new-space))
 
-;; add-atom test case
-!(manuplate-space add-atom &data (collapse (match &self (data_point $x) (data_point $x a))))
-!(collapse (match &data (data_point $x a) (data_point $x a)))
+;; add Data to space
+!(manuplate-space add-atom &data (collapse (match &self (data_point $x) (data_point $x))))
+
+;; add programs to space
+!(manuplate-space add-atom &program (collapse (match &self (program $x) (program $x))))
+
+;!(collapse (match &data (data_point $x) (data_point $x a)))
+;!(collapse (match &program (program $x) (program $x a)))
+!(get-atoms &data)
+!(get-atoms &program)
 
 
 
