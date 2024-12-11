@@ -1,2 +1,10 @@
 !(bind! np-rnd (py-atom random)) 
-!((py-dot np-rnd sample) (py-tuple (1 2 3 5 6 7)) 2 )
+(= [$x] $x)
+( = (random-sample $data ) (
+   let $list ((py-dot np-rnd sample) (py-tuple $data) 2)  (py-atom $list)
+))
+
+
+
+!(random-sample (12 14 11 13))
+
