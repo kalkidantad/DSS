@@ -1,4 +1,4 @@
-!(superpose ((data_point 0) (data_point 1) (data_point 2) (data_point 3) (data_point 4) (data_point 5) (data_point 6) (data_point 7) (data_point 8) (data_point 9) (data_point 10)
+ (data_point 0) (data_point 1) (data_point 2) (data_point 3) (data_point 4) (data_point 5) (data_point 6) (data_point 7) (data_point 8) (data_point 9) (data_point 10)
  (data_point 11) (data_point 12) (data_point 13) (data_point 14) (data_point 15) (data_point 16) (data_point 17) (data_point 18) (data_point 19) (data_point 20) 
  (data_point 21) (data_point 22) (data_point 23) (data_point 24) (data_point 25) (data_point 26) (data_point 27) (data_point 28) (data_point 29) (data_point 30) 
  (data_point 31) (data_point 32) (data_point 33) (data_point 34) (data_point 35) (data_point 36) (data_point 37) (data_point 38) (data_point 39) (data_point 40) 
@@ -7,7 +7,7 @@
  (data_point 61) (data_point 62) (data_point 63) (data_point 64) (data_point 65) (data_point 66) (data_point 67) (data_point 68) (data_point 69) (data_point 70)
  (data_point 71) (data_point 72) (data_point 73) (data_point 74) (data_point 75) (data_point 76) (data_point 77) (data_point 78) (data_point 79) (data_point 80) 
  (data_point 81) (data_point 82) (data_point 83) (data_point 84) (data_point 85) (data_point 86) (data_point 87) (data_point 88) (data_point 89) (data_point 90) 
- (data_point 91) (data_point 92) (data_point 93) (data_point 94) (data_point 95) (data_point 96) (data_point 97) (data_point 98) (data_point 99) ))
+ (data_point 91) (data_point 92) (data_point 93) (data_point 94) (data_point 95) (data_point 96) (data_point 97) (data_point 98) (data_point 99) 
 
 ;;(:manuplate-space (-> $operation $space $tuple Expression))
 (= (manuplate-space $opration $space $elements)(
