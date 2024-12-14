@@ -1,10 +1,10 @@
-; put you code here
 ! (bind! np-rnd (py-atom numpy.random))
 
 ;; check if the element is a member of a list
 (= (isMember $elemnt $list)
     (not (== (collapse (intersection (superpose ($elemnt)) (superpose $list))) ()))
 )
+;;random number generator
 (=(($x)) $x)
 (=(random $num $list)(
   if(== $num 0)
