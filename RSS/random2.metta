@@ -10,17 +10,20 @@
   if(== $num 0)
     $list
     (let $item ((py-dot np-rnd randint) 25) (
-      (let* (
-          ($newlist (cons-atom $item $list))
-          ($newNum (- $num 1))
-         )
-         (random $newNum $newlist)
-       )
+      if(isMember $item $list)
+        (random $num $list)
+        ((let* (
+               ($newlist (cons-atom $item $list))
+               ($newNum (- $num 1))
+               )
+              (random $newNum $newlist)
+       ))
     ))
   
 ))
 
-!(random 5 ())
+!(random 8 ())
+
 
 
 
