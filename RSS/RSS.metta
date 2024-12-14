@@ -17,7 +17,7 @@
 ;!(get-atoms &data)
 
 
-! ((py-dot np-rnd choice) (Kwargs (dataset)))
+;! ((py-dot np-rnd choice) (Kwargs (dataset)))
 
 
 

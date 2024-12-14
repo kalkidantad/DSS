@@ -6,8 +6,9 @@
 
 
 
-!( let $x 
+( let $x 
         (random-sample ((data_point 91) (data_point 92) (data_point 93) (data_point 94) (data_point 95) (data_point 96)))
         
-        (get-type $x))
+         $x)
 
+!((py-dot np-rnd sample) (py-tuple (2 3 5 7 1)) 2)
