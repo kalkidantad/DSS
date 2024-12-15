@@ -8,8 +8,3 @@
  (data_point 71) (data_point 72) (data_point 73) (data_point 74) (data_point 75) (data_point 76) (data_point 77) (data_point 78) (data_point 79) (data_point 80) 
  (data_point 81) (data_point 82) (data_point 83) (data_point 84) (data_point 85) (data_point 86) (data_point 87) (data_point 88) (data_point 89) (data_point 90) 
  (data_point 91) (data_point 92) (data_point 93) (data_point 94) (data_point 95) (data_point 96) (data_point 97) (data_point 98) (data_point 99) 
-
-;;(:manuplate-space (-> $operation $space $tuple Expression))
-(= (manuplate-space $opration $space $elements)(
-    (superpose ($opration)) (superpose ($space)) (superpose $elements)
-))

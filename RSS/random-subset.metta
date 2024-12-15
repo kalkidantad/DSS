@@ -1,10 +1,7 @@
 !(register-module! ../RSS)
 !(import! &self RSS:data)
 !(import! &self RSS:random2)
-;!(import! &self RSS:program)
-!(bind! &data (new-space))
-;!(bind! &program (new-space))
-;! (bind! np-rnd (py-atom numpy.random))
+
 
 (=($x) $x)
 ;; add Data to space
