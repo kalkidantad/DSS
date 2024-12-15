@@ -52,7 +52,7 @@ def rss_simulation():
         
         # Evolve the population
         population = evolve_population(population, fitness_scores)
-        print(f"Evolved population: {population[:5]}... (showing 5 of {population_size})\n")
+        print(f"Evolved population: {population}... (showing 5 of {population_size})\n")
 
     print(f"Final population after {max_generations} generations: {population}")
 

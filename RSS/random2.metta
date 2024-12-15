@@ -34,10 +34,3 @@
 
 
 
-;(=(random $num $list)(
-;  let $item ((py-dot np-rnd randint) 25)
-;    (if   (or (not (isMember $item $list)) (== $list ()))
-;          (let $newlist ( cons-atom $item $list ) (random (- $num 1) $newlist))
-;          (random $num $list)
-;    )
-;))
