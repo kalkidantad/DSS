@@ -5,7 +5,7 @@
 ;;       subset
 ;; output 
 ;;       ('program_44', 0.919729009143922)
-(: evaluate (-> list list fitness))
+;(: evaluate (-> list list fitness))
 (=(enaluate $pupulation $dataset)(
-
+   $dataset
 ))
