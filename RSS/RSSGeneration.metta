@@ -3,7 +3,6 @@
 !(import! &self addaptive_sampling:RSS:program)
 !(import! &self addaptive_sampling:utils:manuplate-space)
 !(import! &self addaptive_sampling:utils:random_number)
-;;!(import! &self addaptive_sampling:RSS:random_dataset)
 !(import! &self addaptive_sampling:RSS:evaluate)
 !(import! &self addaptive_sampling:RSS:evolve)
 
@@ -29,21 +28,26 @@
 
 
 (=(generation $n $dataset)
+  (let* ( ($evaluated_programs (evaluate (get_programs ()) $dataset))
+          ( ()  (println! (programs evaluated)))
+          ($new_generaion (evolve $evaluated_programs))
+        )
+        $new_generaion
+   )
+)
+(=(generation $n $dataset)
   (let $evaluated_programs (evaluate (get_programs ()) $dataset)
-    (let () (println! (finished program Evaluation)) 
-      (evolve $evaluated_programs)
+       (let () (println! $evaluated_programs)
+       
+       )
       
-    )
-    
   )
 ) 
 
 !(generation 5 (selectSubset 4 25))
 
 
-
-(let $programs 
-       (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
-       (let  $evaluated_programs (evaluate $programs $dataset)  $evaluated_programs)
-      
-   )
+(let $newGen (evolve $evaluated_programs)
+                (let () (println! (finished program Evolution))
+                    $newGen
+                ))
