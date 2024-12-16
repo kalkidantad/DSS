@@ -28,29 +28,20 @@
 
 
 (=(generation $n $dataset)
-  (let* ( ($evaluated_programs (evaluate (get_programs ()) $dataset))
+  (let* ( 
+          ($evaluated_programs (evaluate (get_programs ()) $dataset))
+          ( ()  (println! (------ $n Generation ------)))
           ( ()  (println! (programs evaluated)))
           ($new_generaion (evolve $evaluated_programs))
           ( ()  (println! (programs generated)))
           ($new_random_subset (selectSubset 4 25))
           ( ()  (println! (New Random subset generated)))
         )
-        $new_random_subset
+       (if(== (- $n 1) 0)
+          $new_generaion
+          (generation (- $n 1) $new_random_subset )
+       )
    )
 )
-(=(generation $n $dataset)
-  (let $evaluated_programs (evaluate (get_programs ()) $dataset)
-       (let () (println! $evaluated_programs)
-       
-       )
-      
-  )
-) 
 
 !(generation 5 (selectSubset 4 25))
-
-
-(let $newGen (evolve $evaluated_programs)
-                (let () (println! (finished program Evolution))
-                    $newGen
-                ))
