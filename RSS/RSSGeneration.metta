@@ -22,13 +22,12 @@
         ((superpose (match)) (superpose (&data)) ($x (superpose $randomIndex) $y)  ($x $y) )
    )
 ))
+
 (= (get_programs ())
    (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
 )
 
-(=(evolv $x)
-   (car-atom $x)
-)
+
 (=(generation $n $dataset)
   (let $evaluated_programs (evaluate (get_programs ()) $dataset)
     (let () (println! (finished program Evaluation)) 
