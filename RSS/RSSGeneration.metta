@@ -31,8 +31,11 @@
   (let* ( ($evaluated_programs (evaluate (get_programs ()) $dataset))
           ( ()  (println! (programs evaluated)))
           ($new_generaion (evolve $evaluated_programs))
+          ( ()  (println! (programs generated)))
+          ($new_random_subset (selectSubset 4 25))
+          ( ()  (println! (New Random subset generated)))
         )
-        $new_generaion
+        $new_random_subset
    )
 )
 (=(generation $n $dataset)
