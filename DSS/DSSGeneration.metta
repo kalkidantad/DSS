@@ -9,16 +9,21 @@
 !(bind! &data (new-space))
 !(bind! &program (new-space))
 
+(deficualtParam 0.9)
+(ageParam 0.2)
+
+
 ;; bind data and programs to space
-;; add Data to space
-!(manuplate-space add-atom &data (collapse (match &self (data_point $index) (data_point $index $index))))
+;; add Data to space (data_point insex index deficualty age probability)
+!(manuplate-space add-atom &data (collapse (match &self (data_point $index) (data_point $index $index 0 0 0))))
 !(manuplate-space add-atom &program (collapse (match &self (program $index) (program $index $index 0))))
 
 
 ;;select instance subset of subset_size
 (= (selectSubset $subset_size $data_size)(
    collapse (let $randomIndex (random $subset_size $data_size ()) 
-        ((superpose (match)) (superpose (&data)) ($x (superpose $randomIndex) $y)  ($x $y) )
+        ((superpose (match)) (superpose (&data)) ($data (superpose $randomIndex) $index $deficualty $age $probability)  
+                                                 ($data $index $deficualty $age $probability) )
    )
 ))
 
@@ -33,7 +38,7 @@
 (=(generation $n ($program $index $score) $dataset)(
    ($program $index $score)
 ))
-(=(generation $n $programs $dataset)
+(=(generation $start $end $programs $dataset)
   (let* ( ( ()  (println! (------ $n Generation  ------)))
           ($evaluated_programs (evaluate (get_programs $programs) $dataset))
           ( ()  (println! (programs evaluated)))
@@ -42,12 +47,12 @@
           ($new_random_subset (selectSubset 4 25))
           ( ()  (println! (New Random subset generated)))
         )
-       (if(== (- $n 1) 0)
+       (if(== (+ $start 1) $end)
           $new_generaion
-          (generation (- $n 1) $new_generaion $new_random_subset)
+          (generation (+ $start 1) $new_generaion $new_random_subset)
        )
    )
 )
 
-;!(generation 3 () (selectSubset 4 25))
-!(generation 3 ((program 49 0.6773519351097123) (program 31 0.6385969584986677)) (selectSubset 4 25))
+;!(generation 0 3 () (selectSubset 4 25))
+!(selectSubset 4 25)

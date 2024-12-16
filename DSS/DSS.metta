@@ -17,6 +17,7 @@
        ()
        ()
 ))
+
 ;fitness weight of single data
 (=(fitness-weight (data_point $x $D $A) $d $a)(
     (let* (
