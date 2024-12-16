@@ -22,18 +22,30 @@
         ((superpose (match)) (superpose (&data)) ($x (superpose $randomIndex) $y)  ($x $y) )
    )
 ))
-
+(= (get_programs ())
+   (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
+)
+;!(match &program ($program $index $index  $score) ($program $index  $score))
+;!(let $programs (collapse (match &program ($program $index $index  $score) ($program $index  $score))) $programs)
 (=(generation $n $dataset)
-   ;; enaluate
-    (let * (
-            ($programs  (match &program ($program $index $index  $score) ($program $index  $score)))
-            ($evaluated_programs (evaluate $programs $dataset))
-
-           )  
-           $programs
-    ) 
+  (evaluate (get_programs ()) $dataset)
+  
 ) 
-     
 
-
+;!(evaluate (get_programs ()) )
+(let* (
+          ($programs  (collapse (match &program ($program $index $index  $score) ($program $index  $score))))
+          ($evaluated_programs (evaluate $programs $dataset))
+         )
+         ($evaluated_programs)
+   )
+;!(get_programs ())
 !(generation 5 (selectSubset 4 25))
+
+
+
+(let $programs 
+       (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
+       (let  $evaluated_programs (evaluate $programs $dataset)  $evaluated_programs)
+      
+   )
