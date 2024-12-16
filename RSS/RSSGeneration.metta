@@ -25,10 +25,13 @@
 (= (get_programs ())
    (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
 )
-;!(match &program ($program $index $index  $score) ($program $index  $score))
-;!(let $programs (collapse (match &program ($program $index $index  $score) ($program $index  $score))) $programs)
+
+
 (=(generation $n $dataset)
-  (evaluate (get_programs ()) $dataset)
+  (let $evaluated_programs (evaluate (get_programs ()) $dataset)
+    $evaluated_programs
+  )
+  
   
 ) 
 
@@ -39,6 +42,7 @@
          )
          ($evaluated_programs)
    )
+;(evaluate ((collapse (match &program ($program $index $index  $score) ($program $index  $score)))) $dataset)
 ;!(get_programs ())
 !(generation 5 (selectSubset 4 25))
 
