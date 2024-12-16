@@ -26,24 +26,19 @@
    (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
 )
 
-
+(=(evolv $x)
+   (car-atom $x)
+)
 (=(generation $n $dataset)
   (let $evaluated_programs (evaluate (get_programs ()) $dataset)
-    $evaluated_programs
+    (let () (println! (finished program Evaluation)) 
+      (evolve $evaluated_programs)
+      
+    )
+    
   )
-  
-  
 ) 
 
-;!(evaluate (get_programs ()) )
-(let* (
-          ($programs  (collapse (match &program ($program $index $index  $score) ($program $index  $score))))
-          ($evaluated_programs (evaluate $programs $dataset))
-         )
-         ($evaluated_programs)
-   )
-;(evaluate ((collapse (match &program ($program $index $index  $score) ($program $index  $score)))) $dataset)
-;!(get_programs ())
 !(generation 5 (selectSubset 4 25))
 
 

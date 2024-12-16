@@ -3,7 +3,7 @@
 ;; params
 ;;       population or programs
 ;;       subset
-(: evaluate (-> list list fitness))
-(=(evolve $pupulation)(
-
-))
+;(: evolve (-> list list fitness))
+(=(evolve $population)
+   $population
+)
