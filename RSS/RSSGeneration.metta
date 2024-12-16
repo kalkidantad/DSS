@@ -22,15 +22,20 @@
    )
 ))
 
-(= (get_programs ())
-   (collapse (match &program ($program $index $index  $score) ($program $index  $score)))
+(= (get_programs $programs)
+   (case $programs(
+      (() (collapse (match &program ($program $index $index  $score) ($program $index  $score))))
+      ($programs $programs)
+   ))
+   
 )
 
-
-(=(generation $n $dataset)
-  (let* ( 
-          ($evaluated_programs (evaluate (get_programs ()) $dataset))
-          ( ()  (println! (------ $n Generation ------)))
+(=(generation $n ($program $index $score) $dataset)(
+   ($program $index $score)
+))
+(=(generation $n $programs $dataset)
+  (let* ( ( ()  (println! (------ $n Generation  ------)))
+          ($evaluated_programs (evaluate (get_programs $programs) $dataset))
           ( ()  (println! (programs evaluated)))
           ($new_generaion (evolve $evaluated_programs))
           ( ()  (println! (programs generated)))
@@ -39,9 +44,10 @@
         )
        (if(== (- $n 1) 0)
           $new_generaion
-          (generation (- $n 1) $new_random_subset )
+          (generation (- $n 1) $new_generaion $new_random_subset)
        )
    )
 )
 
-!(generation 5 (selectSubset 4 25))
+;!(generation 3 () (selectSubset 4 25))
+!(generation 3 ((program 49 0.6773519351097123) (program 31 0.6385969584986677)) (selectSubset 4 25))
