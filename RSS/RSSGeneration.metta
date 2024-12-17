@@ -43,13 +43,10 @@
           ( ()  (println! (New Random subset generated)))
         )
        (if(== (- $n 1) 0)
-          
           $new_generaion
-          
           (generation (- $n 1) $new_generaion $new_random_subset)
        )
    )
 )
 
-;!(generation 3 () (selectSubset 4 25))
-!(generation 3 ((program 49 0) (program 31 0)) (selectSubset 4 25))
+!(generation 3 () (selectSubset 4 25))
