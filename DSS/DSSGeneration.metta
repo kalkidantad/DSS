@@ -23,7 +23,7 @@
 (= (selectSubset $subset_size $data_size)(
    collapse (let $randomIndex (random $subset_size $data_size ()) 
         ((superpose (match)) (superpose (&data)) ($data (superpose $randomIndex) $index $deficualty $age $probability)  
-                                                 ($data $index $deficualty $age $probability) )
+                                                 ($data $index $deficualty (+ $age 1) $probability) )
    )
 ))
 
@@ -39,7 +39,7 @@
    ($program $index $score)
 ))
 (=(generation $start $end $programs $dataset)
-  (let* ( ( ()  (println! (------ $n Generation  ------)))
+  (let* ( ( ()  (println! (------ $start Generation  ------)))
           ($evaluated_programs (evaluate (get_programs $programs) $dataset))
           ( ()  (println! (programs evaluated)))
           ($new_generaion (evolve $evaluated_programs))
@@ -49,10 +49,9 @@
         )
        (if(== (+ $start 1) $end)
           $new_generaion
-          (generation (+ $start 1) $new_generaion $new_random_subset)
+          (generation (+ $start 1) ($end) $new_generaion $new_random_subset)
        )
    )
 )
 
-;!(generation 0 3 () (selectSubset 4 25))
-!(selectSubset 4 25)
+!(generation 0 3 () (selectSubset 4 25))

@@ -13,6 +13,12 @@
    ($program $index $newFitness)
 ))
 ;(: evaluate (-> list list fitness))
-(=(evaluate $pupulation $dataset)
-  (collapse (fitness (superpose $pupulation) (random_fit ())))
+(=(evaluate $population $dataset)
+  (case $population
+     ((($program $index $fitness) (fitness $population (random_fit ())))
+      ($population (collapse (fitness (superpose $population) (random_fit ()))))
+     )
+   )
 )
+
+!(evaluate (program 31 0.5014647685599923) (sf))

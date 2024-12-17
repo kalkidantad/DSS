@@ -36,18 +36,20 @@
 (=(generation $n $programs $dataset)
   (let* ( ( ()  (println! (------ $n Generation  ------)))
           ($evaluated_programs (evaluate (get_programs $programs) $dataset))
-          ( ()  (println! (programs evaluated)))
+          ( ()  (println! (programs evaluated $evaluated_programs)))
           ($new_generaion (evolve $evaluated_programs))
-          ( ()  (println! (programs generated)))
+          ( ()  (println! (programs generated $new_generaion)))
           ($new_random_subset (selectSubset 4 25))
           ( ()  (println! (New Random subset generated)))
         )
        (if(== (- $n 1) 0)
+          
           $new_generaion
+          
           (generation (- $n 1) $new_generaion $new_random_subset)
        )
    )
 )
 
 ;!(generation 3 () (selectSubset 4 25))
-!(generation 3 ((program 49 0.6773519351097123) (program 31 0.6385969584986677)) (selectSubset 4 25))
+!(generation 3 ((program 49 0) (program 31 0)) (selectSubset 4 25))

@@ -9,9 +9,23 @@
        (empty)
 ))
 (= (filter $predicate $list)
-   (collapse ($predicate (superpose $list)))
+   (
+      case $list
+      (
+         (($program $index $fitness) $list)
+         ($list (collapse ($predicate (superpose $list))))
+      )
+   )
+   
 )
 ;(: evolve (-> list list fitness))
 (=(evolve $population)
-  (filter isFit $population)
+(let $program (filter isFit $population)
+  (if (== $program ())
+       $population
+       $program
+   )
 )
+  
+)
+;!(evolve ((program 31 0.014647685599923)(program 31 0.014647685599923)))

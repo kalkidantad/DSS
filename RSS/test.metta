@@ -1,0 +1,13 @@
+!(let* ( ( ()  (println! (------ $start Generation  ------)))
+          ($evaluated_programs (evaluate (get_programs $programs) $dataset))
+          ( ()  (println! (programs evaluated )))
+          ($new_generaion (evolve $evaluated_programs))
+          ( ()  (println! (programs generated)))
+          ($new_random_subset (selectSubset 4 25))
+          ( ()  (println! (New Random subset generated)))
+        )
+       (if(== (+ $start 1) $end)
+          $new_generaion
+          (generation (+ $start 1) ($end) $new_generaion $new_random_subset)
+       )
+   )
