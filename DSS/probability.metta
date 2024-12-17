@@ -57,5 +57,5 @@
 
 
 !(probability ((data_point 0 2 1 2 0) (data_point 1 3 2 2 0) (data_point 2 2 1 0 0) (data_point 3 3 3 0 0)) 2)
-
+;; output : ((data_point 3 3 3 18 0.8780487804878049) (data_point 2 2 1 5 0.24390243902439024) (data_point 1 3 2 13 0.6341463414634146) (data_point 0 2 1 5 0.24390243902439024))
 
