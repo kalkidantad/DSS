@@ -10,7 +10,12 @@
 
 (=(get-data ()) (collapse (match &self (data_point $index $diff $age $w $probability) (data_point $index $diff $age $w $probability)) )
 )
-
+;; wi*s
+(=(product ($data_point $index $diff $age $w $probability) $subset_size)
+   ( 
+    let $Wip (* $w $subset_size) ($data_point $index $diff $age $w $probability $Wip)
+   )
+)
 ;; total_fitness_weight
 (=(total_fitness_weight $w)
   (foldl (to-list $w))
@@ -28,7 +33,7 @@
 )
 
 ;compute probability
-(= (compute_probability $data_point $subset_size $total_fitness_weight)(
+(= (compute_probability $wiProduct $total_fitness_weight)(
     (let $product 
          (* (fitness-weight $data_point) $subset_size)
          (/ $product $total_fitness_weight)
@@ -36,13 +41,16 @@
     )
 ))
 
+
+
 (= (probability $data_points $subset_size)
   (let* ( ( ()  (println! (------ Generation  ------)))
           ($wi (collapse (fitness-weight (superpose $data_points) 2 2)))
           ($total_fitness_weight (total_fitness_weight (collapse (get-weight (superpose $wi)))))
-          ($wiProduct ())
+          ($wiProduct (collapse (product (superpose $wi) $subset_size)))
+          ;($probability (compute_probability $wiProduct $total_fitness_weight))
         )
-       ( $total_fitness_weight $wi)
+       $wiProduct
    )
 )
 
