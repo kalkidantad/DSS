@@ -5,17 +5,19 @@
 
 (deficualtParam 0.9)
 (ageParam 0.2)
-;(data_point $index $diff $age $w $probability)
+
+;;;(data_point $index $diff $age $w $probability)
+
+;; function to extruct weight of data
 (= (get-weight (data_point $index $diff $age $w $probability)) $w)
 
-(=(get-data ()) (collapse (match &self (data_point $index $diff $age $w $probability) (data_point $index $diff $age $w $probability)) )
-)
 ;; wi*s
 (=(product ($data_point $index $diff $age $w $probability) $subset_size)
    ( 
     let $Wip (* $w $subset_size) ($data_point $index $diff $age $w $probability $Wip)
    )
 )
+
 ;; total_fitness_weight
 (=(total_fitness_weight $w)
   (foldl (to-list $w))
@@ -32,33 +34,28 @@
     )
 )
 
-;compute probability
-(= (compute_probability $wiProduct $total_fitness_weight)(
-    (let $product 
-         (* (fitness-weight $data_point) $subset_size)
-         (/ $product $total_fitness_weight)
-           
+;compute probability of single data
+(= (compute_probability ($data_point $index $diff $age $w $probability $Wip) $total_fitness_weight)
+    (
+        let $newProbability (/ $Wip $total_fitness_weight) ($data_point $index $diff $age $w $newProbability)
     )
-))
+)
 
 
-
-(= (probability $data_points $subset_size)
-  (let* ( ( ()  (println! (------ Generation  ------)))
+;; function to compute probability (data points) (subset size to select)
+(= (probability $data_points $subset_size )
+  (let* ( ( ()  (println! (------ probability computing  ------)))
           ($wi (collapse (fitness-weight (superpose $data_points) 2 2)))
           ($total_fitness_weight (total_fitness_weight (collapse (get-weight (superpose $wi)))))
           ($wiProduct (collapse (product (superpose $wi) $subset_size)))
-          ;($probability (compute_probability $wiProduct $total_fitness_weight))
+          ($probability (collapse (compute_probability (superpose $wiProduct) $total_fitness_weight)))
         )
-       $wiProduct
+        $probability
    )
 )
 
-;!(let $datas (get-data ()) (fitness-weight (superpose $datas) 2 2))
-;!(total_fitness_weight (collapse (match &self (data_point $index $diff $age $w $probability) $w )))
+
 
 !(probability ((data_point 0 2 1 2 0) (data_point 1 3 2 2 0) (data_point 2 2 1 0 0) (data_point 3 3 3 0 0)) 2)
 
 
-
-;!(get-weight (superpose ((data_point 3 3 3 18 0) (data_point 2 2 1 5 0) (data_point 1 3 2 13 0) (data_point 0 2 1 5 0))) )
