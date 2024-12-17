@@ -30,15 +30,14 @@
    
 )
 
-(=(generation $n ($program $index $score) $dataset)(
-   ($program $index $score)
-))
+
 (=(generation $n $programs $dataset)
   (let* ( ( ()  (println! (------ $n Generation  ------)))
+          ( ()  (println! (Random subset generated : $dataset)))
           ($evaluated_programs (evaluate (get_programs $programs) $dataset))
-          ( ()  (println! (programs evaluated $evaluated_programs)))
+          ( ()  (println! (programs evaluated : $evaluated_programs)))
           ($new_generaion (evolve $evaluated_programs))
-          ( ()  (println! (programs generated $new_generaion)))
+          ( ()  (println! (programs generated : $new_generaion)))
           ($new_random_subset (selectSubset 4 25))
           ( ()  (println! (New Random subset generated)))
         )
@@ -49,4 +48,4 @@
    )
 )
 
-!(generation 3 () (selectSubset 4 25))
+!(generation 5 () (selectSubset 4 25))

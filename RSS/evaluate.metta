@@ -15,7 +15,7 @@
 ;(: evaluate (-> list list fitness))
 (=(evaluate $population $dataset)
   (case $population
-     ((($program $index $fitness) (fitness $population (random_fit ())))
+     (((program $index $fitness) (fitness $population (random_fit ())))
       ($population (collapse (fitness (superpose $population) (random_fit ()))))
      )
    )
