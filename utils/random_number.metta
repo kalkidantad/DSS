@@ -41,7 +41,7 @@
   
 ))
 
-;!(random 7 30 ())
+!(random 7 30 ())
 ;; issue  metta-run does not support py-atom
 ;;        metta does not support intersection fonction
 

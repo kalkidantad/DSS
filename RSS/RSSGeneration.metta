@@ -1,10 +1,10 @@
-!(register-module! ../../addaptive_sampling)
-!(import! &self addaptive_sampling:RSS:data)
-!(import! &self addaptive_sampling:RSS:program)
-!(import! &self addaptive_sampling:utils:manuplate-space)
-!(import! &self addaptive_sampling:utils:random_number)
-!(import! &self addaptive_sampling:RSS:evaluate)
-!(import! &self addaptive_sampling:RSS:evolve)
+!(register-module! ../../Addaptive_sampling_for_GP)
+!(import! &self Addaptive_sampling_for_GP:RSS:data)
+!(import! &self Addaptive_sampling_for_GP:RSS:program)
+!(import! &self Addaptive_sampling_for_GP:utils:manuplate-space)
+!(import! &self Addaptive_sampling_for_GP:utils:random_number)
+!(import! &self Addaptive_sampling_for_GP:RSS:evaluate)
+!(import! &self Addaptive_sampling_for_GP:RSS:evolve)
 
 !(bind! &data (new-space))
 !(bind! &program (new-space))
@@ -48,4 +48,4 @@
    )
 )
 
-!(generation 5 () (selectSubset 4 25))
+!(generation 5 () (selectSubset 4 25))to-list
